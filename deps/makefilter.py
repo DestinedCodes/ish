@@ -15,8 +15,7 @@ for line in sys.stdin:
 	if line.endswith('\n'):
 		line = line[:-1]
 	for re in dep_re:
-		m = re.match(line)
-		if m:
+		if m := re.match(line):
 			deps.add(m.group(1))
 			break
 deps = [os.path.realpath(os.path.join(sys.argv[3], dep)) for dep in sorted(deps)]
